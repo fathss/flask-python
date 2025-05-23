@@ -1,0 +1,13 @@
+<!-- Menampilkan isi dari file ini ke block content base.html -->
+{% extends "base.html" %} 
+
+{% block title %}Edit Mahasiswa{% endblock %} 
+{% block content %}
+<form action="/edit/{{ mhs.id }}" method="post">
+  <input type="text" name="nama" value="{{ mhs.nama }}" required />
+  <input type="submit" value="Simpan" />
+</form>
+
+<br />
+<a href="/">Kembali</a>
+{% endblock %}

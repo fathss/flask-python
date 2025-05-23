@@ -1,1 +1,22 @@
+<!-- Menampilkan isi dari file ini ke block content base.html -->
+{% extends "base.html" %} 
 
+{% block title %}Daftar Mahasiswa{% endblock %} 
+{%block content %}
+<form action="/tambah" method="post">
+  <input type="text" name="nama" placeholder="Nama Mahasiswa" required />
+  <input type="submit" value="Tambah" />
+</form>
+
+<ul>
+  {% for mhs in mahasiswa %}
+  <li>
+    {{ mhs.id }}. {{ mhs.nama }}
+    <a href="/edit/{{ mhs.id }}">[Edit]</a>
+    <a href="/hapus/{{ mhs.id }}">[Hapus]</a>
+  </li>
+  {% else %}
+  <li>Tidak ada data.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
