@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Task{% endblock %}
+
+{% block content %}
+<form action="/update/{{ task.id }}" method="post">
+    <input type="text" name="task" value="{{ task.task }}" required>
+    <input type="submit" value="Update Task">
+</form>
+<a href="{{ url_for('index') }}">Kembali</a>
+{% endblock %}

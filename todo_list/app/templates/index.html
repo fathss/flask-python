@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/add_task" method="post">
+    <input type="text" name="task" placeholder="Enter a new task" required>
+    <input type="submit" value="Add Task">
+</form>
+
+{% for task in tasks %}
+    <form action="/toggle/{{ task.id }}" method="post" style="display:inline;">
+        <input type="checkbox" name="completed" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}>
+    </form>
+    <span {% if task.completed %}style="text-decoration: line-through;"{% endif %}>
+        {{ task.task }}
+    </span>
+    <a href="/update/{{ task.id }}">Edit</a>
+    <a href="/delete/{{ task.id }}">Delete</a>
+    <br>
+{% endfor %}
+{% endblock %}
